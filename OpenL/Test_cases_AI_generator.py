@@ -10,7 +10,7 @@ csv_string = file.to_csv(index=False)
 csv_bytes = csv_string.encode('utf-8')
 csv_base64 = base64.b64encode(csv_bytes).decode('utf-8')
 
-#example_payload = {"contents": [{"parts": [{"text": "Considering this json: {'context': {'currentDateTime': '2025-07-07T13:46:37','currentUser': {}},'shipment': {'numberOfPieces': 10.00000,'originCountry': 'CA'}} make another one where in the addition of those two fields you also add originCode with the value 126 and another json with the value 130. Also in your json response, change the single quoting in the original one for double"}]}]}
+
 example_payload = {"contents":
                        [{"parts":
                              [{"inline_data":
@@ -25,6 +25,7 @@ example_payload = {"contents":
                                        "It is not mandatory to include the initial 'numberOfPieces or originCountry unless they are"
                                        "of course necesary to test the rule."
                                        "In your response simply return the json don't give any further explanations or descriptions"}]}]}
+
 def submit_prompt (api_key, payload):
     headers = {'Content-Type': 'application/json','X-goog-api-key': api_key }
     response = requests.post(URL,json=payload,headers=headers)
