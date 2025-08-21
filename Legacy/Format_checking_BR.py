@@ -11,6 +11,8 @@ def flag_row(row):
     valid_days = {'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'}
     if str(row['pickupDay']) not in valid_days:
         flags.append('invalid_day')
+    if str(row['deliveryDay']) not in valid_days:
+        flags.append('invalid_day')
     time_window_pattern = re.compile(r'^\d{2}:\d{2}[AP]M\s*-\s*\d{2}:\d{2}[AP]M$')
     if not pd.isna(row['deliveryWindow']) and not time_window_pattern.match(str(row['deliveryWindow'])):
         flags.append('bad_time_window')
