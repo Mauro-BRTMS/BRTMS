@@ -49,7 +49,7 @@ for _, row in df3.iterrows():
         n = n + 1
         timewindow_id = response[0]["id"]
         payload = '[{"closed": ' + str(row["closed"]) + ', "closingHours": "' + str(row["closingHours"]) + '", "days": ' + str(int(row["days"])) + ', "id": '+ str(int(timewindow_id)) +', "openingHours": "' + str(row["openingHours"]) + '", "address":' + str(row["address"]) + '}]'
-        response = requests.post(url, headers=headers, data=payload)
+        response = requests.put(url, headers=headers, data=payload)
         print(n)
         print(payload)
         print(response)
